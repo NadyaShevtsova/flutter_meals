@@ -12,15 +12,15 @@ class MealItem extends StatelessWidget {
 
   final Meal meal;
 
-String get complexityText {
-  return meal.complexity.name[0].toUpperCase() +
-      meal.complexity.name.substring(1); // will return first leter in a complexity name
-}
+  String get complexityText {
+    return meal.complexity.name[0].toUpperCase() +
+        meal.complexity.name.substring(1); // will return first leter in a complexity name
+  }
 
-String get afordabilityText {
-  return meal.affordability.name[0].toUpperCase() +
-      meal.affordability.name.substring(1); // will return first leter in a complexity name
-}
+  String get afordabilityText {
+    return meal.affordability.name[0].toUpperCase() +
+        meal.affordability.name.substring(1); // will return first leter in a complexity name
+  }
 
   @override
   Widget build(BuildContext context) {
