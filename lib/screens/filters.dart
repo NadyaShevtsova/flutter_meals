@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meals/main.dart';
+
+// import 'package:meals/screens/tabs.dart';
+// import 'package:meals/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});
@@ -19,6 +21,18 @@ class _FiltersScreenState extends State<FiltersScreen> {
       appBar: AppBar(
         title: const Text('Your filters'),
       ),
+      // drawer: MainDrawer( //back arrow navigtion will gone
+      //   onSelectScreen: (identifier) {
+      //     Navigator.of(context).pop;
+      //     if (identifier == 'meal') {
+      //       Navigator.of(context).pushReplacement(
+      //         MaterialPageRoute(
+      //           builder: (ctx) => const TabsScreen(),
+      //         ),
+      //       );
+      //     }
+      //   },
+      // ),
       body: Column(
         children: [
           SwitchListTile(
@@ -39,9 +53,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
-              ),
+            ),
             activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22,),
+            contentPadding: const EdgeInsets.only(
+              left: 34,
+              right: 22,
+            ),
           ),
         ],
       ),
