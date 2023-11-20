@@ -45,13 +45,15 @@ class _FiltersScreenState extends State<FiltersScreen> {
       //   },
       // ),
       body: WillPopScope(
-        onWillPop: () {
+        onWillPop: () async {
+          // this value will be returned to _setScreen function in TabsScreen in push
           Navigator.of(context).pop({
             Filter.glutenFree: _glutenFreeFilterSet,
             Filter.lactoseFree: _lactoseFreeFilterSet,
             Filter.vegetarian: _vegeterianFreeFilterSet,
             Filter.vegan: _veganFreeFilterSet,
           });
+          return false; //true if you want useres to allow to leave the scren
         },
         child: Column(
           children: [
