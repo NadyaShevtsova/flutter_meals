@@ -5,7 +5,7 @@ class FavoriteMealsNotifier extends StateNotifier<List<Meal>> {
   //[] we are passing an empty list
   FavoriteMealsNotifier() : super([]);
 
-  void toggleMealFavouriteStatus(Meal meal) {
+  bool toggleMealFavouriteStatus(Meal meal) {
     final mealIsFavourite = state.contains(meal);
 
     // state holdes your data, in this case it's a list of meals
@@ -13,8 +13,10 @@ class FavoriteMealsNotifier extends StateNotifier<List<Meal>> {
     // instead reassigne it
     if (mealIsFavourite) {
       state = state.where((m) => m.id != meal.id).toList();
+      return false;
     } else {
       state = [...state, meal];
+      return true;
     }
   }
 }
