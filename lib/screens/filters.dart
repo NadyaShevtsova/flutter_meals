@@ -7,12 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals/providers/filters_provider.dart';
 
 class FiltersScreen extends ConsumerStatefulWidget {
-  const FiltersScreen({
-    super.key,
-    required this.currentFilters,
-    });
+  const FiltersScreen({super.key});
 
-  final Map<Filter, bool> currentFilters;
   @override
   ConsumerState<FiltersScreen> createState() {
     return _FiltersScreenState();
@@ -28,10 +24,11 @@ class _FiltersScreenState extends ConsumerState<FiltersScreen> {
   @override
   void initState() {
     super.initState();
-    _glutenFreeFilterSet = widget.currentFilters[Filter.glutenFree]!;
-    _lactoseFreeFilterSet = widget.currentFilters[Filter.lactoseFree]!;
-    _veganFreeFilterSet = widget.currentFilters[Filter.vegan]!;
-    _vegeterianFreeFilterSet = widget.currentFilters[Filter.vegetarian]!;
+    final activeFilters = ref.read(filterProvider);
+    _glutenFreeFilterSet = activeFilters[Filter.glutenFree]!;
+    _lactoseFreeFilterSet = activeFilters[Filter.lactoseFree]!;
+    _veganFreeFilterSet = activeFilters[Filter.vegan]!;
+    _vegeterianFreeFilterSet = activeFilters[Filter.vegetarian]!;
 
   }
 
@@ -55,14 +52,15 @@ class _FiltersScreenState extends ConsumerState<FiltersScreen> {
       // ),
       body: WillPopScope(
         onWillPop: () async {
-          // this value will be returned to _setScreen function in TabsScreen in push
-          Navigator.of(context).pop({
+          ref.read(filterProvider.notifier).setFilters({
             Filter.glutenFree: _glutenFreeFilterSet,
             Filter.lactoseFree: _lactoseFreeFilterSet,
             Filter.vegetarian: _vegeterianFreeFilterSet,
             Filter.vegan: _veganFreeFilterSet,
           });
-          return false; //true if you want useres to allow to leave the scren
+          // this value will be returned to _setScreen function in TabsScreen in push
+          // Navigator.of(context).pop();
+          return true; //true if you want useres to allow to leave the scren
         },
         child: Column(
           children: [
