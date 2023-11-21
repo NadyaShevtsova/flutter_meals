@@ -11,7 +11,7 @@ class FiltersScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final activeFilters = ref.watch(filterProvider);
+    final activeFilters = ref.watch(filtersProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your filters'),
@@ -23,7 +23,7 @@ class FiltersScreen extends ConsumerWidget {
             SwitchListTile(
               value: activeFilters[Filter.glutenFree]!,
               onChanged: (isChecked) {
-                ref.read(filterProvider.notifier).setFilter(Filter.glutenFree, isChecked);
+                ref.read(filtersProvider.notifier).setFilter(Filter.glutenFree, isChecked);
               },
               title: Text(
                 'Glutten-free',
@@ -46,7 +46,7 @@ class FiltersScreen extends ConsumerWidget {
             SwitchListTile(
               value: activeFilters[Filter.lactoseFree]!,
               onChanged: (isChecked) {
-                ref.read(filterProvider.notifier).setFilter(Filter.lactoseFree, isChecked);
+                ref.read(filtersProvider.notifier).setFilter(Filter.lactoseFree, isChecked);
               },
               title: Text(
                 'Lactose-free',
@@ -69,7 +69,7 @@ class FiltersScreen extends ConsumerWidget {
             SwitchListTile(
               value: activeFilters[Filter.vegetarian]!,
               onChanged: (isChecked) {
-                ref.read(filterProvider.notifier).setFilter(Filter.vegetarian, isChecked);
+                ref.read(filtersProvider.notifier).setFilter(Filter.vegetarian, isChecked);
               },
               title: Text(
                 'Vegeterian',
@@ -92,7 +92,7 @@ class FiltersScreen extends ConsumerWidget {
             SwitchListTile(
               value: activeFilters[Filter.vegan]!,
               onChanged: (isChecked) {
-                ref.read(filterProvider.notifier).setFilter(Filter.vegan, isChecked);
+                ref.read(filtersProvider.notifier).setFilter(Filter.vegan, isChecked);
               },
               title: Text(
                 'Vegan',
